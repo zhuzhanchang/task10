@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>task102</title>
+</head>
+<body>        
+    <input id="dec-number" type="number" placeholder="输入一个十进制非负整数">
+    <button id="trans-btn">转化为二进制</button>
+    <p id="result">运算结果</p>
+    <script>
+    	var dec = document.getElementById('dec-number');
+    	var transBtn = document.getElementById('trans-btn');
+    	var result = document.getElementById('result');
+	    var str = '';
+
+		function dec2bin(decNumber) {
+			
+			if (decNumber != 0) {
+				str = (decNumber % 2).toString() + str;
+				decNumber = Math.floor(decNumber/2);
+				dec2bin(decNumber);
+			}
+		    return str;
+		}
+		transBtn.onclick = function () {
+			str = '';
+			decNum = Number(dec.value);
+			n = /^(0|[1-9]\d*)$/;
+			if (n.test(decNum)) {
+				if (decNum == 0) {
+					str = '0';
+				}else {
+					dec2bin(decNum);
+				}				
+			}else {
+				alert("请输入非负整数！")			
+			};
+			result.innerHTML = str;
+		};
+    </script>
+</body>
+</html>

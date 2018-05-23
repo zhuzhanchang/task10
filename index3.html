@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>task103</title>
+</head>
+<body>        
+    <input id="dec-number" type="number" placeholder="输入一个十进制非负整数">
+    <input id="bin-bit" type="number" placeholder="输入转化后二进制数字位数">
+    <button id="trans-btn">转化为二进制</button>
+    <p id="result">运算结果</p>
+</body>
+</html>
+<script>
+    var dec = document.getElementById('dec-number');
+    var binBit = document.getElementById('bin-bit');
+    var transBtn = document.getElementById('trans-btn');
+    var result = document.getElementById('result');
+    var str = '';
+
+    function dec2bin(decNumber) {
+        
+        if (decNumber != 0) {
+            str = (decNumber % 2).toString() + str;
+            decNumber = Math.floor(decNumber/2);
+            dec2bin(decNumber);
+        }
+        return str;
+    }
+    transBtn.onclick = function () {
+        str = '';
+        decNum = Number(dec.value);
+        n = /^(0|[1-9]\d*)$/;
+        if (n.test(decNum)) {
+            decNum == 0 ? str = '0' : dec2bin(decNum);             
+        }else {
+            alert("请输入非负整数！")           
+        };
+        var binNum = Number(binBit.value);
+        if (binNum > str.length) {
+            var num = binNum - str.length;
+            for (var i = 0; i < num; i++) {
+                str = '0' + str;
+            }
+        }else {
+            console.log('限定位数小于实际位数！');
+        }
+        result.innerHTML = str;
+    };
+    </script>

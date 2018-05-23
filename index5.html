@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task10</title>
+</head>
+<body>
+	<table>
+		<tr></tr>
+		<tr></tr>
+		<tr></tr>
+		<tr></tr>
+		<tr></tr>
+		<tr></tr>
+		<tr></tr>
+		<tr></tr>
+		<tr></tr>
+	</table>
+</body>
+</html>
+<script>
+	var tr = document.getElementsByTagName('tr');
+	for (var i = 1; i < 10; i++) {
+		for (var j = 1; j <= i; j++) {
+			tr[i-1].innerHTML += '<td>' + j + ' * ' + i + ' = ' + j*i + '</td>';
+			console.log(i + ' * ' + j + ' = ' + j*i)
+		}		
+	}
+</script>
